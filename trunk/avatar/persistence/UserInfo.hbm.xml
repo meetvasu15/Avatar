@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+ 	<class name="com.asu.avatar.domain.UserInfo" table="user_info">
+
+ 	 	<id column="USER_ID" name="userID" type="java.lang.Long">
+ 	 	 	<generator class="identity"/>
+ 	 	</id>
+ 	 	
+<property column="USER_NAME" length="255" name="userName" not-null="true" type="java.lang.String"/>
+<property column="USER_PASSWORD" length="255" name="userpassword"  type="java.lang.String"/>
+<property column="USER_FIRST_NAME" length="255" name="userFirstName" type="java.lang.String"/>
+<property column="USER_LAST_NAME" length="255" name="userLastName" type="java.lang.String"/>
+<property column="USER_EMAIL" length="255" name="userEmail" type="java.lang.String"/> 
+
+ 	</class>
+</hibernate-mapping>

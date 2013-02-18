@@ -1,0 +1,165 @@
+.body {
+	background-color: #fff;
+}
+
+.header-navBar {
+	margin-top: 1%;
+	border-radius: 30px 30px 0 0;
+	background-image: url("/avatar/images/headerbg.jpg");
+}
+
+.left-header-span {
+	font: 35px Verdana white;
+	color: white;
+	margin-left: 1%;
+	width: 60%;
+	float: left;
+}
+
+.rightHeader {
+	text-align: right;
+	padding-top: 1%;
+}
+
+.right-header-span {
+	font: 20px Verdana white;
+	color: white;
+	margin-left: 1%;
+	width: 30%;
+	float: right;
+	vertical-align: bottom;
+}
+
+.row-container {
+	height: 50%;
+	margin-bottom: 60px;
+}
+
+.all-components { 
+	background-color: #fff;
+	padding: 10px;
+}
+
+.component-container {
+	height: 100%;
+	border-radius: 10px;
+	border-radius: 25px;
+	border: 2px solid blue;
+}
+
+.top-headings {
+	height: 8%;
+	text-align: center;
+	font: 18px Verdana;
+	text-shadow: none;
+	color: blue;
+	border-bottom: 2px solid blue;
+}
+
+.pl-header {
+	background-color: lightBlue;
+	border-radius: 25px 25px 0 0;
+	border-bottom: 2px solid blue;
+}
+
+.ct-header {
+	background-color: #AEF3AE;
+	border-radius: 25px 25px 0 0;
+}
+
+.im-header {
+	background-color: lightBlue;
+	border-radius: 25px 25px 0 0;
+}
+
+.cl-header {
+	background-color: #FFFF6F;
+	border-radius: 25px 25px 0 0;
+}
+
+.calendarPaneClass {
+	background-color: #FFFF6F;
+	line-height: 0;
+	float: none;
+	margin-top:1%;
+}
+.helpGuyMainDivClass{
+margin-top:1%;
+}
+
+.hw-header {
+	background-color: lightBlue;
+	border-radius: 25px 25px 0 0;
+}
+
+.hg-header {
+	background-color: #FFC761;
+	border-radius: 25px 25px 0 0;
+}
+
+.left-row {
+float: left;
+	width:30%;
+}
+
+.right-row {
+float: right;
+	width:30%;
+}
+
+.todaysClassUl {
+	margin: 5%;
+	margin-top: 2%;
+	font: 14px Verdana;
+	color: blue;
+}
+
+.todaysClassUl li {
+	padding: 1%;
+}
+.homeworkClassUl{
+	margin: 5%;
+	margin-top: 2%;
+	font: 14px Verdana;
+	color: blue;
+}
+.homeworkClassUl li {
+	padding: 1%;
+}
+[class^="icon-"],[class*=" icon-"] {
+	background-image: url("/avatar/images/glyphicons-halflings.png");
+}
+
+.todaysClassUl li a {
+	display: inline;
+}
+
+.todaysClass-heading {
+	line-height: 20px;
+	color: blue;
+	margin-left: 5%;
+	font-weight: normal;
+}
+
+.homeworkPaneUl {
+	margin: 5%;
+	margin-top: 2%;
+	font: 14px Verdana;
+	color: blue;
+}
+
+.homeworkPaneUl li {
+	padding: 1%;
+}
+
+.homeworkPaneUl li a {
+	display: inline;
+}
+.super-container{
+height:600px;
+}
+.todaysClassMainDiv{
+border-radius: 8px;
+width:35%;
+overflow-y: auto;
+}

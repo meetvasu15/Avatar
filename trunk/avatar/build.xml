@@ -1,0 +1,96 @@
+<!--
+Author: Vasu Gupta 10/28/12
+-->
+
+<project name="avatar" default="compile" basedir=".">
+	<property file="build.properties"/>
+
+	<target name="clean" description="clean up" >
+		<echo message="[clean] :: cleaning the previous build"/>
+		<delete dir="${tempbuild.dir}"/>
+		<delete dir="${dist.dir}/${jar.name}"/>
+
+
+	</target>
+
+
+	<!-- Create directory-->
+	<target name="init">
+		<echo message="[init] :: initializing the required stuff"/>
+		<mkdir dir="${tempbuild.dir}"/>
+		<mkdir dir="${tempbuild.jsp}"/>
+		<mkdir dir="${tempbuild.javascript}"/>
+		<mkdir dir="${tempbuild.images}"/>
+		<mkdir dir="${tempbuild.classes}"/>
+		<mkdir dir="${tempbuild.lib}"/>
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${tempbuild.css}"/>
+		<mkdir dir="${tempbuild.webinf}"/>
+		<mkdir dir="${tempbuild.videos}"/>
+
+	</target>
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}" includes="*.jar"/>
+		<fileset dir="${tomcat.home}/lib" includes="servlet-api.jar"/>
+		<pathelement location="${tempbuild.classes}"/>
+	</path>
+	<target name="compile" depends="clean,init" description="compile the source" >
+		<echo message="[compile] :: Compiling the source code"/>
+
+		<javac destdir="${tempbuild.classes}" classpathref="compile.classpath" debug="true"
+	    		deprecation="false"
+	    		optimize="true">
+			<src path="${src.dir}"/>
+		</javac>
+	</target>
+
+
+	<target name="prepareweb" depends="clean,init" description="prepare all the web data" >
+		<echo message="[prepareweb] :: Preparing(copying) all the required files for web, i.e jsp, images etc..."/>
+
+		<copy todir="${tempbuild.images}">
+			<fileset dir="${images.dir}" excludes="readme.txt"/>
+		</copy>
+		<copy todir="${tempbuild.css}">
+			<fileset dir="${css.dir}" excludes="readme.txt"/>
+		</copy>
+		<copy todir="${tempbuild.lib}">
+			<fileset dir="${lib.dir}"/>
+		</copy>
+		<copy todir="${tempbuild.jsp}">
+			<fileset dir="${jsp.dir}" excludes="readme.txt"/>
+		</copy>
+		<copy todir="${tempbuild.javascript}">
+			<fileset dir="${javascript.dir}"/>
+		</copy>
+		<copy todir="${tempbuild.videos}">
+			<fileset dir="${videos.dir}"/>
+		</copy>
+		<copy file="web.xml" tofile="${tempbuild.webinf}/web.xml"/>
+	</target>
+	<target name="hibmaps" depends="clean,init" description="generate the distribution" >
+		<echo message="[Hibmaps] :: creating jar out of hibernate maps(xml maps)"/>
+
+		<jar jarfile="${tempbuild.lib}/hibmaps.jar">
+			<fileset dir="${persistence.dir}" excludes="*.txt"/>
+		</jar>
+	</target>
+
+	<target name="makewar" depends="compile,prepareweb,hibmaps" description="generate the war file" >
+		<echo message="[dist] :: creating the war file for Avatar..."/>
+		<jar jarfile="${dist.dir}/${jar.name}">
+			<fileset dir="${tempbuild.dir}"/>
+		</jar>
+	</target>
+	<target name="deploy" depends="makewar" description="Deployment made easy" >
+		<!-- Delete away any previous WAR file. -->
+		<delete file="${tomcat.home}/webapps/${jar.name}"/>
+		<delete dir="${tomcat.home}/webapps/${app.name}"/>
+		<!--<copy todir ="${tomcat.home}/webapps" overwrite="true">
+			<fileset file ="${dist.dir}/${jar.name}"/>
+		</copy>-->
+		<copy file="${dist.dir}/${jar.name}" tofile="${tomcat.home}/webapps/${jar.name}"/>
+	</target>
+</project>
+
+
